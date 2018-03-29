@@ -1,3 +1,5 @@
+package org.gvozdetscky.chattyp2p;
+
 import java.io.IOException;
 import java.net.DatagramPacket;
 import java.net.DatagramSocket;
@@ -33,7 +35,7 @@ public class Channel implements Runnable {
 			try {
 				socket.receive(packet);
 
-				String msg = new String(buffer);
+				String msg = new String(buffer, 0, packet.getLength());
 				System.out.println(msg);
 			} catch (IOException e) {
 				e.printStackTrace();
